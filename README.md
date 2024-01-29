@@ -1,5 +1,11 @@
 In this project, a network has been created using *ns3* and *Docker*. In the setup folder, you can find the necessary installations for the proper functioning of the ns3-Network.cc file.
 
+<p align = "center">
+  The image below represents the network created
+  <img src = "https://github.com/LucaTamSapienza/ns3Project/assets/155265433/11a58814-1583-4d09-96eb-ff6dded48c99" width = 700, heigth = 300/>
+</p>
+
+
 To observe the correct operation of the latter, follow the instructions below:
 
 - Ensure that ns3 is installed correctly by referring to the instructions in the **setup** folder.
@@ -9,6 +15,7 @@ To observe the correct operation of the latter, follow the instructions below:
 These steps will allow you to observe the final result of the project.
 >[!tip]
 >For a correct use of Docker, see the instructions below:
+
 
 To see all the image downloaded run:
 ```sh
