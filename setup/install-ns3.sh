@@ -11,6 +11,6 @@ docker build -t ns-3-corso-img -f $filename .
 # docker stop ns-3-corso # in case you need to stop the container
 # docker rm ns-3-corso # in case you need to delete the image
 # If you want to create a folder that is connected in your workspace, add the following flag -v <path_on_host>/<path_on_container>
-docker run -d -it --name ns-3-course ns-3-img
+docker run -d -it --name ns-3-corso ns-3-corso-img
 
 echo "Creation of the image and run of the container done, get inside with: docker exec -it ns-3-con bash"
