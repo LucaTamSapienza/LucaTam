@@ -18,7 +18,7 @@ NS_LOG_COMPONENT_DEFINE ("task_2012670");
 
 /*
 
-da implementare nell'application
+packet sending application layer
 
 TCP burst traffic of 1617 B for each packet starting at 0.49 s
 	Sender: Node 10	Receiver: Server 0
@@ -39,7 +39,10 @@ UDP Echo application with Client 11 and Server 3
 
 int main( int argc, char* argv[]){
     
-    //Parameters -> run ./ns3 run task_2012670 -- --studentId=2012670 --tracing=1
+    /*run ./ns3 run task_2012670 -- --studentId=2012670 
+    -if you want to enable the generation of pcap files add --tracing=1 to the running command
+    -if you also want to enable the RtsCts (RequestToSend and ClearToSend) technology add --EnableRtsCts=1 to the running command 
+    */
     std::string studentId;
     bool enableRtsCts = false;
     bool tracing = false;
