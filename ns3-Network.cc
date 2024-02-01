@@ -57,8 +57,9 @@ int main( int argc, char* argv[]){
         Config::SetDefault("ns3::WifiRemoteStationManager::RtsCtsThreshold", StringValue("0"));
     } else{
         /*
-        serve per disabilitare il meccanismo di RTS/CTS poiche sto impostalndo l'RtsCtsThreshold ad un numero tale che solo i pacchetti
-        di dimensione maggiore a 999999 bytes potranno usare rts/cts
+        need it to disable the RTS/CTS mechanism because I'm setting the RtsCtsThreshold to a number such that only packets 
+        with size greater than 999999 bytes will use rts/cts
+         
         */
         Config::SetDefault("ns3::WifiRemoteStationManager::RtsCtsThreshold", StringValue("999999")); 
     }
@@ -70,8 +71,8 @@ int main( int argc, char* argv[]){
 
 
     /*
-    Settiamo inizialmente tutti i collegamenti PTP e csma in base all'immagine png fornitaci 
-    successivamente li installeremo
+    we're setting all the links PTP and csma according to the png image provided
+    then we'll install them
     */
     PointToPointHelper p2p_10Mbps_200ms;
     p2p_10Mbps_200ms.SetDeviceAttribute("DataRate", StringValue("10Mbps"));
@@ -121,9 +122,10 @@ int main( int argc, char* argv[]){
     
     /******************************************************/    
 
-    //MIGLIORARE
-    /*per ora non faccio i collegamenti tra il server e i router del networkA e networkC (multihoming non trattato a lezione)*/
-    //li ho provati a fare ma non funzionano  -> da rivedere 
+    //UPGRADABLE
+    /*
+    need help on creating the links between the server and the routers of networkA and networkC
+    */
     /********Creation of Network D server-router csma_10Mbps_200ms**************/
 
     NodeContainer networkD, routerD;
@@ -137,7 +139,7 @@ int main( int argc, char* argv[]){
 
     /*********************************************/
 
-    //MIGLIORARE
+    //UPGRADABLE
     /****************IP addressing network D******************/   
 
     //NodeContainer allNodesTuttoB = NodeContainer(allNodesD, nodoDC, nodoDA);
@@ -223,7 +225,7 @@ int main( int argc, char* argv[]){
 
     /***********COLLEGAMENTI******************/
     
-    /*****Collegamento P2P tra il networkD,l'APNode e il routerC******/
+    /***** P2P LINK between il networkD,l'APNode e il routerC******/
 
     /*
     NetDeviceContainer devicesD0, devicesD1;
@@ -243,7 +245,7 @@ int main( int argc, char* argv[]){
 
     /*****Create links between routers****/
     
-    //L1 collega il routerB -> routerD (ancora da definire routerD)
+    //L1 link routerB -> routerD 
     NodeContainer L1;
     L1.Add(routerB.Get(0));
     L1.Add(routerD.Get(0));
@@ -255,7 +257,7 @@ int main( int argc, char* argv[]){
     //address.SetBase("192.168.5.0", "255.255.255.252");
     Ipv4InterfaceContainer interfacesL1 = address.Assign(devicesL1);
 
-    //L2 collega il routerA -> routerD
+    //L2 link routerA -> routerD
     NodeContainer L2;
     L2.Add(APNode.Get(0));
     L2.Add(routerD.Get(0));
@@ -267,7 +269,7 @@ int main( int argc, char* argv[]){
     //address.SetBase("192.168.6.0", "255.255.255.252");
     Ipv4InterfaceContainer interfacesL2 = address.Assign(devicesL2);
 
-    //L3 collega il routerC -> routerD
+    //L3 link routerC -> routerD
     NodeContainer L3;
     L3.Add(routerC.Get(0));
     L3.Add(routerD.Get(0));
@@ -283,7 +285,7 @@ int main( int argc, char* argv[]){
     /******************Mobility*********************/
 
 
-    //per nodi stazionario
+    //nodes moving stationary mode 
     MobilityHelper mobilityAP;
     mobilityAP.SetMobilityModel("ns3::ConstantPositionMobilityModel");
     mobilityAP.Install(APNode);
@@ -297,7 +299,7 @@ int main( int argc, char* argv[]){
     mobilityAP.Install(L2);
     mobilityAP.Install(L3);
 
-    //per i device wifi --- random walk mobility pattern over a bounded square of 30 meters for each side
+    //for wifi devices --- random walk mobility pattern over a bounded square of 30 meters for each side
    
     MobilityHelper mobilityStations;
     mobilityStations.SetPositionAllocator("ns3::RandomRectanglePositionAllocator",
@@ -321,6 +323,8 @@ int main( int argc, char* argv[]){
     TCP burst traffic of 1517 B for each packet starting at 3.24 s
     	Sender: Node 6	Receiver: Server 0
     */
+
+    //the OnOffHelper is used to send packets with a given size and periodicity (see Burst Traffic in the ns3 documentation)
 
     //burst traffic of 1617 B for each packet starting at 0.49 s Sender: Node 10 Receiver: Server 0
     uint16_t port1 = 1025;
@@ -397,7 +401,9 @@ int main( int argc, char* argv[]){
     
     ApplicationContainer clientApps = echoClient.Install(networkA.Get(2)); 
     clientApps.Start(Seconds(0.0));
-    
+
+
+    //we are setting the fill of the echoClient to a string of 8 names (can be changed) 
     Ptr<UdpEchoClient> Echoclient = DynamicCast<UdpEchoClient>(clientApps.Get(0));
     Echoclient->SetFill("Julian,Panait,Luca,Tam,Francesco,Macri,Giulia,Pelorossi");
 
@@ -437,6 +443,9 @@ int main( int argc, char* argv[]){
     
     /**********pcap-files******************/
 
+
+    //to enable pcap run ./ns3 run task_2012670 -- --studentId=2012670 --tracing=1
+    //to enable pcap and RtsCts run ./ns3 run task_2012670 -- --studentId=2012670 --tracing=1 --enableRtsCts=1
     if(tracing){   
         if (enableRtsCts){
             phy.SetPcapDataLinkType(WifiPhyHelper::DLT_IEEE802_11_RADIO);
