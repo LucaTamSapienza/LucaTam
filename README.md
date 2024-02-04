@@ -39,6 +39,6 @@ docker stop ns-3-corso
 |:-------:|:-------:|
 |ReduceL2-1|initial version|
 |ReduceL2-11|`axes` range is now [-r, -r-1], r = rank(data)|
-|ReduceL2-13|adde T:  tensor(bfloat16)|
-|ReduceL2-18|---|
+|ReduceL2-13|added `T`:  tensor(bfloat16)|
+|ReduceL2-18|`axes` attributes is now `noop_with_empty_axes` : int (default is 0) <br> `data` (differentiable) : T)|
 
