@@ -33,3 +33,12 @@ To stop the running container
 ```sh
 docker stop ns-3-corso
 ```
+
+
+|Version|Changes|
+|:-------:|:-------:|
+|ReduceL2-1|initial version|
+|ReduceL2-11|`axes` range is now [-r, -r-1], r = rank(data)|
+|ReduceL2-13|adde T:  tensor(bfloat16)|
+|ReduceL2-18|---|
+
