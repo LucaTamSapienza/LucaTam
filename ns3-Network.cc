@@ -11,7 +11,6 @@
 #include "ns3/wifi-helper.h"
 #include "ns3/wifi-helper.h"
 #include "ns3/yans-wifi-helper.h"
-
 using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE ("task_2012670");
