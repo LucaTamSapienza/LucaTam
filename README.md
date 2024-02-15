@@ -10,7 +10,7 @@ To observe the correct operation of the latter, follow the instructions below:
 
 - Ensure that ns3 is installed correctly by referring to the instructions in the **setup** folder.
 - Build ns3 according to the provided setup instructions.
-- Place the file ns3-Network.cc inside the scratch folder
+- Place the file ns3-Network.cc inside the scratch folder.
 
 These steps will allow you to observe the final result of the project.
 >[!tip]
