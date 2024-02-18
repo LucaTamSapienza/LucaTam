@@ -1,4 +1,4 @@
-n this project, a network has been created using *ns3* and *Docker*. In the setup folder, you can find the necessary installations for the proper functioning of the ns3-Network.cc file.
+In this project, a network has been created using *ns3* and *Docker*. In the setup folder, you can find the necessary installations for the proper functioning of the ns3-Network.cc file.
 
 <p align = "center">
   The image below represents the network created
