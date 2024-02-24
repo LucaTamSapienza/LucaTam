@@ -1,4 +1,4 @@
-#include <string
+#include <string>
 #include "ns3/applications-module.h"
 #include "ns3/core-module.h"
 #include "ns3/csma-module.h"
