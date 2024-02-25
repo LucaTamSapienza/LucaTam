@@ -17,7 +17,7 @@
 FROM ubuntu as buildenv
 
 # Install dependencies
-RUN mkdir -p /workspac
+RUN mkdir -p /workspace
 # This can be Rome, your preference
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
