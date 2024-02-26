@@ -29,7 +29,7 @@ To run the container with the image downloaded during the installation
 ```sh
 docker start ns-3-corso
 ```
-To stop the running containe
+To stop the running container
 ```sh
 docker stop ns-3-corso
 ```
