@@ -23,7 +23,7 @@ ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y wget build-essential git cmake libsctp-dev autoconf automake libtool bison flex libboost-all-dev tmux g++ python3 curl ninja-build openssh-server htop nano valgrind gdb
 
-WORKDIR /workspac
+WORKDIR /workspace
 
 # Install ns-3
 RUN git clone https://gitlab.com/nsnam/ns-3-dev.git /workspace/ns3
