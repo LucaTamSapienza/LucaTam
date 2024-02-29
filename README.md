@@ -8,7 +8,7 @@ In this project, a network has been created using *ns3* and *Docker*. In the set
 
 To observe the correct operation of the latter, follow the instructions below:
 
-- Ensure that ns3 is installed correctly by referring to the instructions in the **setup** folder.
+- Ensure that ns3 and docker are installed correctly by referring to the instructions in the **setup** folder.
 - Build ns3 according to the provided setup instructions.
 - Place the file ns3-Network.cc inside the scratch folder.
 
