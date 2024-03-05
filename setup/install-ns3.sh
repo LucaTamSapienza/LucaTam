@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Check if the version argument is provided
+# Check if the version argument is provide
 if [ -z "$1" ]; then
     read -p "Please enter the name of the docker file file: " filename  # Prompt for input
 else
