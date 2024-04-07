@@ -59,7 +59,6 @@ int main( int argc, char* argv[]){
         /*
         need it to disable the RTS/CTS mechanism because I'm setting the RtsCtsThreshold to a number such that only packets 
         with size greater than 999999 bytes will use rts/cts
-         
         */
         Config::SetDefault("ns3::WifiRemoteStationManager::RtsCtsThreshold", StringValue("999999")); 
     }
